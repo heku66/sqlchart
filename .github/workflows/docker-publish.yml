@@ -1,9 +1,9 @@
-name: Build and Push sqlchart Docker Image
+name: Build and Push SQLChart Docker Image
 
 on:
   push:
-    branches: [main]     # 你也可以写成 master 或其他分支
-  workflow_dispatch:     # 允许手动触发
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-push:
@@ -20,11 +20,11 @@ jobs:
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USER }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: yourname/sqlchart:latest
+        tags: solyhe84/sqlchart:latest
